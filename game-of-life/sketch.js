@@ -7,14 +7,20 @@ let nextBoard;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  columns = floor(windowWidth / CELL_WIDTH);
-  rows = floor(windowHeight / CELL_WIDTH);
-  
+  columns = floor(width / CELL_WIDTH);
+  rows = floor(height / CELL_WIDTH);
   board = new Board(columns, rows, CELL_WIDTH);
+
+  textSize(20);
+  textStyle(BOLD);
+  textAlign(RIGHT);
+  
 }
 
 function draw() {
   board.evolve();
   board.draw();
-  text(frameRate(), width / 2, height / 2);
+
+  fill(255,0,0);
+  text(floor(frameRate()), width - 30, 30);
 }
