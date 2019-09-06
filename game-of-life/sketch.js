@@ -4,6 +4,7 @@ let rows;
 const CELL_WIDTH = 20;
 let board;
 let nextBoard;
+let pause = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -23,4 +24,15 @@ function draw() {
 
   fill(255,0,0);
   text(floor(frameRate()), width - 30, 30);
+}
+
+function mousePressed() {
+  board.mousePressed();
+}
+
+function keyPressed() {
+  if (keyCode === 32) {
+    pause = !pause;
+    pause ? noLoop() : loop();
+  }
 }

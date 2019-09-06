@@ -1,3 +1,12 @@
+const PATTERN_7468M = [
+  [0,0,1,1],
+  [0,0,1,0],
+  [0,0,0,0],
+  [0,0,1,0],
+  [1,1,1,0],
+  [0,1,0,0],
+] // http://www.conwaylife.com/wiki/7468M
+
 class Board {
   constructor(cols, rows, cellWidth) {
     this.cols = cols;
@@ -52,5 +61,16 @@ class Board {
     let temp = this.grid;
     this.grid = this.nextGrid;
     this.nextGrid = temp;
+  }
+
+  mousePressed() {
+    const pressedCol = floor(mouseX / this.cellWidth);
+    const pressedRow = floor(mouseY / this.cellWidth);
+    
+    for (let i = 0; i < PATTERN_7468M.length; i++) {
+      for (let j = 0; j < PATTERN_7468M[i].length; j++) {
+        this.grid[(pressedCol + i + this.cols)%this.cols][(pressedRow + j + this.rows) % this.rows] = PATTERN_7468M[i][j];
+      }
+    }
   }
 }
