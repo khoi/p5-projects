@@ -1,3 +1,4 @@
+p5.disableFriendlyErrors = true; // disables FES
 
 let columns;
 let rows;
