@@ -26,7 +26,7 @@ class Board {
   randomize() {
     for (let i = 0; i < this.cols; i++) {
       for (let j = 0; j < this.rows; j++) {
-        this.grid[i][j] = floor(random(2));
+        this.grid[i][j] = Math.floor(random(2));
         this.nextGrid[i][j] = 0;
       }
     }
@@ -64,8 +64,8 @@ class Board {
   }
 
   mousePressed() {
-    const pressedCol = floor(mouseX / this.cellWidth);
-    const pressedRow = floor(mouseY / this.cellWidth);
+    const pressedCol = Math.floor(mouseX / this.cellWidth);
+    const pressedRow = Math.floor(mouseY / this.cellWidth);
     
     for (let i = 0; i < PATTERN_7468M.length; i++) {
       for (let j = 0; j < PATTERN_7468M[i].length; j++) {

@@ -24,7 +24,7 @@ function draw() {
   board.draw();
 
   fill(255,0,0);
-  text(floor(frameRate()), width - 30, 30);
+  text(Math.floor(frameRate()), width - 30, 30);
 }
 
 function mousePressed() {
