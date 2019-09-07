@@ -16,14 +16,13 @@ function setup() {
   textSize(20);
   textStyle(BOLD);
   textAlign(RIGHT);
-  
 }
 
 function draw() {
   board.evolve();
   board.draw();
 
-  fill(255,0,0);
+  fill(255, 0, 0);
   text(Math.floor(frameRate()), width - 30, 30);
 }
 
