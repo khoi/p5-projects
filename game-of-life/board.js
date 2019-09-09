@@ -43,6 +43,7 @@ class Board {
   }
 
   draw() {
+    background(255);
     for (let i = 0; i < this.cols; i++) {
       for (let j = 0; j < this.rows; j++) {
         this.grid[i][j].draw();

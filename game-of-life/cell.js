@@ -12,9 +12,9 @@ class Cell {
   }
 
   draw() {
+    if (this.state == 0) return;
     if (this.state == 1) fill(0);
     else fill(255);
-    stroke(0);
     rect(this.x, this.y, this.w, this.w);
   }
 }

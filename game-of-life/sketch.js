@@ -1,13 +1,16 @@
 p5.disableFriendlyErrors = true; // disables FES
 
+const CELL_WIDTH = 20;
+const FRAME_RATE = 60;
+
 let columns;
 let rows;
-const CELL_WIDTH = 20;
 let board;
 let nextBoard;
 let pause = false;
 
 function setup() {
+  frameRate(FRAME_RATE);
   createCanvas(windowWidth, windowHeight);
   columns = floor(width / CELL_WIDTH);
   rows = floor(height / CELL_WIDTH);
