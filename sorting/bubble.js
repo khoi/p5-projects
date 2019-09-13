@@ -14,7 +14,7 @@ class BubbleSort {
           values[j + 1] = t;
           swapped = true;
         }
-        yield j + 1;
+        yield [j, j + 1];
       }
 
       if (!swapped) {

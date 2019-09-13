@@ -32,7 +32,8 @@ function draw() {
 
   for (let i = 0; i < values.length; i++) {
     stroke(255);
-    if (i == next.value) fill(255, 0, 0);
+    if (i == next.value[0]) fill(255, 0, 0);
+    else if (i == next.value[1]) fill(0, 255, 0);
     else fill(255);
     rect(i * columnWidth, height - values[i], columnWidth, values[i]);
   }
