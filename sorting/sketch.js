@@ -2,9 +2,13 @@ let sortGenerator;
 let values;
 let N = 250;
 let columnWidth;
+const FRAME_RATE = 60;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+
+  frameRate(FRAME_RATE);
+
   values = new Array(N);
   for (let i = 0; i < N; i++) {
     values[i] = random(height);
@@ -20,15 +24,17 @@ function setup() {
 function draw() {
   background(0);
 
-  for (let i = 0; i < values.length; i++) {
-    stroke(255);
-    fill(255);
-    rect(i * columnWidth, height - values[i], columnWidth, values[i]);
-  }
-
-  if (sortGenerator.next().done) {
+  let next = sortGenerator.next();
+  if (next.done) {
     print("Done!");
     noLoop();
+  }
+
+  for (let i = 0; i < values.length; i++) {
+    stroke(255);
+    if (i == next.value) fill(255, 0, 0);
+    else fill(255);
+    rect(i * columnWidth, height - values[i], columnWidth, values[i]);
   }
 
   fill(255, 0, 0);
