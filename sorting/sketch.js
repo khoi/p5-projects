@@ -1,6 +1,6 @@
 let sortGenerator;
 let values;
-let N = 50;
+let N = 250;
 let columnWidth;
 
 function setup() {
@@ -11,10 +11,15 @@ function setup() {
   }
   columnWidth = width / N;
   sortGenerator = new BubbleSort(values).makeGenerator();
+
+  textSize(20);
+  textStyle(BOLD);
+  textAlign(RIGHT);
 }
 
 function draw() {
   background(0);
+
   for (let i = 0; i < values.length; i++) {
     stroke(255);
     fill(255);
@@ -25,4 +30,7 @@ function draw() {
     print("Done!");
     noLoop();
   }
+
+  fill(255, 0, 0);
+  text(Math.floor(frameRate()), width - 30, 30);
 }
