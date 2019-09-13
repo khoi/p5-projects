@@ -15,6 +15,6 @@ class Cell {
     if (this.state == 0) return;
     if (this.state == 1) fill(0);
     else fill(255);
-    rect(this.x, this.y, this.w, this.w);
+    rect(this.x, this.y, this.w - 2, this.w - 2);
   }
 }
