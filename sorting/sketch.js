@@ -1,8 +1,8 @@
 let sortGenerator;
 let values;
-let N = 250;
+let N = 50;
 let columnWidth;
-const FRAME_RATE = 60;
+const FRAME_RATE = 50;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -14,7 +14,7 @@ function setup() {
     values[i] = random(height);
   }
   columnWidth = width / N;
-  sortGenerator = new BubbleSort(values).makeGenerator();
+  sortGenerator = new InsertionSort(values).makeGenerator();
 
   textSize(20);
   textStyle(BOLD);
@@ -22,14 +22,14 @@ function setup() {
 }
 
 function draw() {
-  background(0);
-
   let next = sortGenerator.next();
   if (next.done) {
     print("Done!");
     noLoop();
+    return;
   }
 
+  background(0);
   for (let i = 0; i < values.length; i++) {
     stroke(255);
     if (i == next.value[0]) fill(255, 0, 0);
