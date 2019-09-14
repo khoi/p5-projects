@@ -10,8 +10,8 @@ let tileHeight;
 let sorters;
 
 const SORT_CLASSES = {
-  bubble: BubbleSort,
-  insertion: InsertionSort
+  bubble: bubbleSort,
+  insertion: insertionSort
 };
 
 function setup() {
@@ -52,7 +52,7 @@ function startSorting(algorithm) {
       values[i][j] = j;
     }
     shuffle(values[i], true);
-    sorters[i] = new SORT_CLASSES[algorithm](values[i]).makeGenerator();
+    sorters[i] = SORT_CLASSES[algorithm](values[i]);
   }
 }
 
