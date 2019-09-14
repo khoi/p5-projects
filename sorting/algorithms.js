@@ -36,7 +36,7 @@ class InsertionSort {
       while (j >= 0 && this.values[j] > key) {
         this.values[j + 1] = this.values[j];
         j = j - 1;
-        yield [j, j + 1];
+        yield [j, i];
       }
       this.values[j + 1] = key;
     }

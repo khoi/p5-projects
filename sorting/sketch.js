@@ -14,7 +14,7 @@ function setup() {
     values[i] = random(height);
   }
   columnWidth = width / N;
-  sortGenerator = new InsertionSort(values).makeGenerator();
+  sortGenerator = new BubbleSort(values).makeGenerator();
 
   textSize(20);
   textStyle(BOLD);
