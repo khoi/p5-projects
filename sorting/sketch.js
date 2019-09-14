@@ -27,14 +27,7 @@ function setup() {
   values = new Array(M);
   sorters = new Array(M);
 
-  for (let i = 0; i < M; i++) {
-    values[i] = new Array(N);
-    for (let j = 0; j < N; j++) {
-      values[i][j] = j;
-    }
-    shuffle(values[i], true);
-    sorters[i] = new InsertionSort(values[i]).makeGenerator();
-  }
+  startSorting("bubble");
 
   textSize(20);
   textStyle(BOLD);
