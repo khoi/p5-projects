@@ -8,13 +8,13 @@ class BubbleSort {
     let i, j;
     for (i = 0; i < this.values.length; i++) {
       for (j = 0; j < this.values.length - i - 1; j++) {
-        if (values[j] > values[j + 1]) {
-          let t = values[j];
-          values[j] = values[j + 1];
-          values[j + 1] = t;
+        if (this.values[j] > this.values[j + 1]) {
+          let t = this.values[j];
+          this.values[j] = this.values[j + 1];
+          this.values[j + 1] = t;
           swapped = true;
         }
-        yield [j, j + 1];
+        yield;
       }
 
       if (!swapped) {
@@ -36,7 +36,7 @@ class InsertionSort {
       while (j >= 0 && this.values[j] > key) {
         this.values[j + 1] = this.values[j];
         j = j - 1;
-        yield [j, i];
+        yield;
       }
       this.values[j + 1] = key;
     }

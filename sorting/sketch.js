@@ -1,20 +1,28 @@
-let sortGenerator;
 let values;
 let N = 50;
 let columnWidth;
-const FRAME_RATE = 50;
+const FRAME_RATE = 60;
+let sorters;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 800);
+  colorMode(HSL, 360, 100, 100);
 
   frameRate(FRAME_RATE);
 
   values = new Array(N);
+  sorters = new Array(N);
+
   for (let i = 0; i < N; i++) {
-    values[i] = random(height);
+    values[i] = new Array(N);
+    for (let j = 0; j < N; j++) {
+      values[i][j] = j;
+    }
+    shuffle(values[i], true);
+    sorters[i] = new BubbleSort(values[i]).makeGenerator();
   }
+
   columnWidth = width / N;
-  sortGenerator = new BubbleSort(values).makeGenerator();
 
   textSize(20);
   textStyle(BOLD);
@@ -22,22 +30,16 @@ function setup() {
 }
 
 function draw() {
-  let next = sortGenerator.next();
-  if (next.done) {
-    print("Done!");
-    noLoop();
-    return;
-  }
-
   background(0);
-  for (let i = 0; i < values.length; i++) {
-    stroke(255);
-    if (i == next.value[0]) fill(255, 0, 0);
-    else if (i == next.value[1]) fill(0, 255, 0);
-    else fill(255);
-    rect(i * columnWidth, height - values[i], columnWidth, values[i]);
+  for (let i = 0; i < N; i++) {
+    for (let j = 0; j < N; j++) {
+      let c = color(map(values[i][j], 0, N, 0, 360), 100, 50);
+      stroke(c);
+      fill(c);
+      rect(j * columnWidth, i * columnWidth, columnWidth, columnWidth);
+    }
+    sorters[i].next();
   }
-
   fill(255, 0, 0);
   text(Math.floor(frameRate()), width - 30, 30);
 }
