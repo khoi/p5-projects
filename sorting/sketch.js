@@ -28,7 +28,7 @@ function setup() {
   values = new Array(M);
   sorters = new Array(M);
 
-  startSorting("bubbleSort");
+  startSorting("insertion");
 
   textSize(20);
   textStyle(BOLD);
