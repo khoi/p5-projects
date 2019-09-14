@@ -11,7 +11,8 @@ let sorters;
 
 const SORT_CLASSES = {
   bubble: bubbleSort,
-  insertion: insertionSort
+  insertion: insertionSort,
+  selection: selectionSort,
 };
 
 function setup() {
@@ -27,7 +28,7 @@ function setup() {
   values = new Array(M);
   sorters = new Array(M);
 
-  startSorting("bubble");
+  startSorting("bubbleSort");
 
   textSize(20);
   textStyle(BOLD);
@@ -37,7 +38,7 @@ function setup() {
 function setupInput() {
   Object.keys(SORT_CLASSES).forEach((k, i) => {
     let button = createButton(k);
-    button.position(60 * i + 20, 20);
+    button.position(70 * i + 30, 20);
     button.mousePressed(() => startSorting(k));
   });
 }
