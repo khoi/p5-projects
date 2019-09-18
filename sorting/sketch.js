@@ -13,6 +13,7 @@ const SORT_CLASSES = {
   bubble: bubbleSort,
   insertion: insertionSort,
   selection: selectionSort,
+  quickSort: quickSort,
 };
 
 function setup() {
