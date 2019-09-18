@@ -49,7 +49,7 @@ function* _quickSort(values, left, right) {
   if (left >= right) {
     return;
   }
-  let partitionGenerator = partition(values, left, right);
+  let partitionGenerator = _partition(values, left, right);
 
   let result = partitionGenerator.next();
   while (!result.done) {
@@ -58,8 +58,8 @@ function* _quickSort(values, left, right) {
   }
 
   let idx = result.value;
-  yield* quickSort(values, left, idx)
-  yield* quickSort(values, idx + 1, right)
+  yield* _quickSort(values, left, idx)
+  yield* _quickSort(values, idx + 1, right)
 }
 
 function* _partition(values, left, right) {
