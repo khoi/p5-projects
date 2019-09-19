@@ -1,13 +1,15 @@
 const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
+const TILE_WIDTH = 100;
 
-let N = 50;
-let M = 10;
+let N;
+let M;
 
 let values;
-let tileWidth;
-let tileHeight;
 let sorters;
+let sortersFinished;
+let capturer = new CCapture({ format: "png", framerate: FRAME_RATE });
+let isRecording = false;
 
 const SORT_CLASSES = {
   bubble: bubbleSort,
@@ -23,8 +25,8 @@ function setup() {
 
   setupInput();
 
-  tileWidth = width / N;
-  M = Math.floor(windowHeight / tileWidth);
+  N = Math.floor(width / TILE_WIDTH);
+  M = Math.floor(height / TILE_WIDTH);
 
   values = new Array(M);
   sorters = new Array(M);
@@ -47,6 +49,7 @@ function setupInput() {
 function startSorting(algorithm) {
   values = new Array(M);
   sorters = new Array(M);
+  sortersFinished = new Array(M);
 
   for (let i = 0; i < M; i++) {
     values[i] = new Array(N);
@@ -55,6 +58,7 @@ function startSorting(algorithm) {
     }
     shuffle(values[i], true);
     sorters[i] = SORT_CLASSES[algorithm](values[i]);
+    sortersFinished[i] = false;
   }
 }
 
@@ -64,11 +68,29 @@ function draw() {
       let c = color(map(values[i][j], 0, N, 0, 360), 100, 50);
       stroke(c);
       fill(c);
-      rect(j * tileWidth, i * tileWidth, tileWidth, tileWidth);
+      rect(j * TILE_WIDTH, i * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
     }
-    sorters[i].next();
+    sortersFinished[i] = sorters[i].next().done;
   }
+
+  if (isRecording) {
+    capturer.capture(document.getElementById("defaultCanvas0"));
+    if (sortersFinished.every(finished => finished)) {
+      stopRecording();
+    }
+  }
+
   drawFrameRate();
+}
+
+function startRecording() {
+  capturer.start();
+  isRecording = true;
+}
+
+function stopRecording() {
+  capturer.stop();
+  capturer.save();
 }
 
 function drawFrameRate() {
