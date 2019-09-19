@@ -19,7 +19,7 @@ const SORT_CLASSES = {
 };
 
 function setup() {
-  createCanvas(1680, 1050);
+  createCanvas(windowWidth, windowHeight);
   colorMode(HSL, 360, 100, 100);
   frameRate(FRAME_RATE);
 
