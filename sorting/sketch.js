@@ -103,6 +103,7 @@ function startRecording() {
 }
 
 function stopRecording() {
+  isRecording = false;
   capturer.stop();
   capturer.save();
 }
