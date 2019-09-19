@@ -1,6 +1,6 @@
 const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
-const TILE_WIDTH = 100;
+const TILE_WIDTH = 20;
 
 let N;
 let M;
@@ -19,7 +19,7 @@ const SORT_CLASSES = {
 };
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(1680, 1050);
   colorMode(HSL, 360, 100, 100);
   frameRate(FRAME_RATE);
 
@@ -77,6 +77,7 @@ function draw() {
     capturer.capture(document.getElementById("defaultCanvas0"));
     if (sortersFinished.every(finished => finished)) {
       stopRecording();
+      noLoop();
     }
   }
 
