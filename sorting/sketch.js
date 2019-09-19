@@ -1,3 +1,5 @@
+p5.disableFriendlyErrors = true; // disables FES
+
 const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
 const TILE_WIDTH = 5;
