@@ -1,6 +1,6 @@
 const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
-const TILE_WIDTH = 20;
+const TILE_WIDTH = 5;
 const DRAW_FRAMERATE = false;
 const DEFAULT_ALGO = "mergeSort";
 
@@ -25,7 +25,7 @@ let isRecording = false;
 let sel;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
+  createCanvas(800, 600);
   colorMode(HSL, 360, 100, 100);
   frameRate(FRAME_RATE);
 
