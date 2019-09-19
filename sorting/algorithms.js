@@ -3,7 +3,7 @@ function* bubbleSort(values) {
   for (let i = 0; i < values.length; i++) {
     for (let j = 0; j < values.length - i - 1; j++) {
       if (values[j] > values[j + 1]) {
-        [values[j], values[j + 1]] = [values[j + 1], values[j]]
+        [values[j], values[j + 1]] = [values[j + 1], values[j]];
         swapped = true;
       }
       yield;
@@ -25,6 +25,7 @@ function* insertionSort(values) {
       yield;
     }
     values[j + 1] = key;
+    yield;
   }
 }
 
@@ -36,13 +37,13 @@ function* selectionSort(values) {
         minIdx = j;
       }
     }
-    [values[i], values[minIdx]] = [values[minIdx], values[i]]
+    [values[i], values[minIdx]] = [values[minIdx], values[i]];
     yield;
   }
 }
 
 function* quickSort(values) {
-  yield* _quickSort(values, 0, values.length - 1)
+  yield* _quickSort(values, 0, values.length - 1);
 }
 
 function* _quickSort(values, left, right) {
@@ -54,12 +55,12 @@ function* _quickSort(values, left, right) {
   let result = partitionGenerator.next();
   while (!result.done) {
     result = partitionGenerator.next();
-    yield 1
+    yield 1;
   }
 
   let idx = result.value;
-  yield* _quickSort(values, left, idx)
-  yield* _quickSort(values, idx + 1, right)
+  yield* _quickSort(values, left, idx);
+  yield* _quickSort(values, idx + 1, right);
 }
 
 function* _partition(values, left, right) {
@@ -72,7 +73,6 @@ function* _partition(values, left, right) {
     [values[left], values[right]] = [values[right], values[left]];
     left++;
     right--;
-    yield
+    yield;
   }
 }
-

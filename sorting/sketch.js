@@ -65,8 +65,9 @@ function startSorting(algorithm) {
 
 function draw() {
   for (let i = 0; i < M; i++) {
-    if (sortersFinished[i]) {
-      continue; // row doesn't change, no need to rerender
+    if (sorters[i].next().done) {
+      sortersFinished[i] = true;
+      continue;
     }
     for (let j = 0; j < N; j++) {
       let c = color(map(values[i][j], 0, N, 0, 360), 100, 50);
@@ -74,7 +75,6 @@ function draw() {
       fill(c);
       rect(j * TILE_WIDTH, i * TILE_WIDTH, TILE_WIDTH, TILE_WIDTH);
     }
-    sortersFinished[i] = sorters[i].next().done;
   }
 
   if (isRecording) {
