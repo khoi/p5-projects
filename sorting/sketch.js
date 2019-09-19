@@ -1,6 +1,7 @@
 const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
 const TILE_WIDTH = 20;
+const DRAW_FRAMERATE = false;
 
 let N;
 let M;
@@ -64,6 +65,9 @@ function startSorting(algorithm) {
 
 function draw() {
   for (let i = 0; i < M; i++) {
+    if (sortersFinished[i]) {
+      continue; // row doesn't change, no need to rerender
+    }
     for (let j = 0; j < N; j++) {
       let c = color(map(values[i][j], 0, N, 0, 360), 100, 50);
       stroke(c);
@@ -81,7 +85,7 @@ function draw() {
     }
   }
 
-  drawFrameRate();
+  if (DRAW_FRAMERATE) drawFrameRate();
 }
 
 function startRecording() {
