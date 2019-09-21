@@ -22,7 +22,12 @@ let M;
 let values;
 let sorters;
 let sortersFinished;
-let capturer = new CCapture({ format: "png", framerate: FRAME_RATE });
+let capturer = new CCapture({
+  format: "png",
+  autoSaveTime: 10,
+  framerate: FRAME_RATE,
+  verbose: true
+});
 let isRecording = false;
 let sel;
 
