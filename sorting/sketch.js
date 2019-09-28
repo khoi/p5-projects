@@ -32,7 +32,7 @@ let isRecording = false;
 let sel;
 
 function setup() {
-  pixelDensity(1);
+  pixelDensity(3);
 
   createCanvas(1600, 900);
   colorMode(HSL, 360, 100, 100);
