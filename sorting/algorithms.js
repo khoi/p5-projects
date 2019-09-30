@@ -76,3 +76,17 @@ function* _partition(values, left, right) {
     yield;
   }
 }
+
+function* bogoSort(values) {
+  while (!isSorted(values)) {
+    shuffle(values, true);
+    yield;
+  }
+}
+
+function isSorted(values) {
+  for (let i = 0; i < values.length - 1; i++) {
+    if (values[i] > values[i + 1]) return false;
+  }
+  return true;
+}
