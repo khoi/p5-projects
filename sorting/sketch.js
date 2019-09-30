@@ -2,6 +2,7 @@ const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
 const TILE_WIDTH = 20;
 const DRAW_FRAMERATE = false;
+const DEFAULT_ALGO = "insertion";
 
 let N;
 let M;
@@ -26,7 +27,7 @@ function setup() {
   colorMode(HSL, 360, 100, 100);
   frameRate(FRAME_RATE);
 
-  setupInput();
+  setupInput(DEFAULT_ALGO);
 
   N = Math.floor(width / TILE_WIDTH);
   M = Math.floor(height / TILE_WIDTH);
@@ -34,19 +35,20 @@ function setup() {
   values = new Array(M);
   sorters = new Array(M);
 
-  startSorting("insertion");
+  startSorting(DEFAULT_ALGO);
 
   textSize(20);
   textStyle(BOLD);
   textAlign(RIGHT);
 }
 
-function setupInput() {
+function setupInput(initialValue) {
   sel = createSelect();
   sel.position(10, 10);
   Object.keys(SORT_CLASSES).forEach(k => {
     sel.option(k);
   });
+  sel.value(initialValue);
   sel.changed(() => startSorting(sel.value()));
 }
 
