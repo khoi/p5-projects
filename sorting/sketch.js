@@ -11,6 +11,7 @@ let sorters;
 let sortersFinished;
 let capturer = new CCapture({ format: "png", framerate: FRAME_RATE });
 let isRecording = false;
+let sel;
 
 const SORT_CLASSES = {
   bubble: bubbleSort,
@@ -41,11 +42,12 @@ function setup() {
 }
 
 function setupInput() {
-  Object.keys(SORT_CLASSES).forEach((k, i) => {
-    let button = createButton(k);
-    button.position(70 * i + 30, 20);
-    button.mousePressed(() => startSorting(k));
+  sel = createSelect();
+  sel.position(10, 10);
+  Object.keys(SORT_CLASSES).forEach(k => {
+    sel.option(k);
   });
+  sel.changed(() => startSorting(sel.value()));
 }
 
 function startSorting(algorithm) {
