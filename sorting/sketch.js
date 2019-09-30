@@ -18,7 +18,7 @@ const SORT_CLASSES = {
   bubble: bubbleSort,
   insertion: insertionSort,
   selection: selectionSort,
-  quickSort: quickSort,
+  "quickSort (hoare)": quickSortHoare,
   bogoSort: bogoSort
 };
 
