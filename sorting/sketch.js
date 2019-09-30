@@ -4,6 +4,15 @@ const TILE_WIDTH = 20;
 const DRAW_FRAMERATE = false;
 const DEFAULT_ALGO = "insertion";
 
+const SORT_CLASSES = {
+  bubble: bubbleSort,
+  insertion: insertionSort,
+  selection: selectionSort,
+  "quickSort (hoare)": quickSortHoare,
+  "quickSort (lomuto)": quickSortLomuto,
+  bogoSort: bogoSort
+};
+
 let N;
 let M;
 
@@ -13,14 +22,6 @@ let sortersFinished;
 let capturer = new CCapture({ format: "png", framerate: FRAME_RATE });
 let isRecording = false;
 let sel;
-
-const SORT_CLASSES = {
-  bubble: bubbleSort,
-  insertion: insertionSort,
-  selection: selectionSort,
-  "quickSort (hoare)": quickSortHoare,
-  bogoSort: bogoSort
-};
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
