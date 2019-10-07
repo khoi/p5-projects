@@ -2,7 +2,7 @@ const FRAME_RATE = 60;
 const CONTROL_HEIGHT = 20;
 const TILE_WIDTH = 20;
 const DRAW_FRAMERATE = false;
-const DEFAULT_ALGO = "insertion";
+const DEFAULT_ALGO = "mergeSort";
 
 const SORT_CLASSES = {
   bubble: bubbleSort,
@@ -11,7 +11,7 @@ const SORT_CLASSES = {
   "quickSort (hoare)": quickSortHoare,
   "quickSort (lomuto)": quickSortLomuto,
   bogoSort: bogoSort,
-  mergeSort: mergeSort,
+  mergeSort: mergeSort
 };
 
 let N;
